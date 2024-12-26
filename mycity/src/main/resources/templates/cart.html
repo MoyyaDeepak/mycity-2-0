@@ -314,21 +314,7 @@ ul {
                 </button>
             </div>
         </header>
-    <div class="container">
-        <div class="cart-wrapper">
-            <div class="cart-container">
-                <div class="cart-header">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M2 3h2l2.5 12h11l3-9H6"></path>
-                        <circle cx="10" cy="20" r="1"></circle>
-                        <circle cx="18" cy="20" r="1"></circle>
-                    </svg>
-                    <h1 class="cart-title">Your Cart</h1>
-                </div>
-                <div id="cartContent"></div>
-            </div>
-        </div>
-    </div>
+    
     <div class="container">
         <div class="cart-wrapper">
             <div class="cart-container">
@@ -375,29 +361,6 @@ ul {
     </div>
 
     <script>
-        const initialCartItems = [
-            {
-                cartId: 1,
-                product: {
-                    productId: 1,
-                    name: "Premium Headphones",
-                    price: 2999,
-                    image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500",
-                },
-                quantity: 1
-            },
-            {
-                cartId: 2,
-                product: {
-                    productId: 2,
-                    name: "Wireless Speaker",
-                    price: 1999,
-                    image: "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500",
-                },
-                quantity: 2
-            }
-        ];
-
         let cartItems = [...initialCartItems];
 
         function formatPrice(price) {
