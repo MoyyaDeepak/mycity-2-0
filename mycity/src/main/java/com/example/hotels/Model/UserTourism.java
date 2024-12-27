@@ -1,4 +1,4 @@
- package com.example.hotels.Model;
+package com.example.hotels.Model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,7 +9,6 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-
 
 @Entity
 @Table(name = "users")
@@ -33,31 +32,23 @@ public class UserTourism {
     @Column(name = "email")
     private String email;
 
+    @NotBlank(message = "Password is required")
 
-   @NotBlank(message = "Password is required")
+    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{7,}$", message = "Password needs  7+ characters with alphanumeric.")
+    @Column(name = "password")
+    private String password;
 
-@Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{7,}$", 
-         message = "Password needs  7+ characters with alphanumeric.")
-@Column(name = "password")
-private String password;
+    @NotBlank(message = "Mobile number is required")
+    @Pattern(regexp = "^(?!0{10})(?!([0-9])\\1{9})(?!.*([0-9])\\2{4})\\d{10}$", message = "Mobile number must be invalid")
+    @Column(name = "mobile")
+    private String mobile;
 
-    
+    @NotBlank(message = "Address is required")
+    @Pattern(regexp = "^[^\\s][a-zA-Z0-9]+([\\s]?[a-zA-Z0-9]|[\\s]?[/\\-,](?![/\\-,]))*$", message = "Address is invalid")
+    @Column(name = "address")
+    private String address;
 
-
-
-@NotBlank(message = "Mobile number is required")
-@Pattern(regexp = "^(?!0{10})(?!([0-9])\\1{9})(?!.*([0-9])\\2{4})\\d{10}$", message = "Mobile number must be invalid")
-@Column(name = "mobile")
-private String mobile;  
-
-
-@NotBlank(message = "Address is required")
-@Pattern(regexp = "^[^\\s][a-zA-Z0-9]+([\\s]?[a-zA-Z0-9]|[\\s]?[/\\-,](?![/\\-,]))*$", message = "Address is invalid")
-@Column(name = "address")
-private String address;
-
-
-    public UserTourism(){
+    public UserTourism() {
 
     }
 
@@ -68,56 +59,55 @@ private String address;
         this.mobile = mobile;
         this.name = name;
         this.password = password;
-      
-     
+
     }
 
-
-    public int getId(){
+    public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
-  
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public String getPassword() {
         return password;
     }
+
     public void setPassword(String password) {
         this.password = password;
     }
+
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
+
     public String getMobile() {
         return mobile;
     }
+
     public void setMobile(String mobile) {
         this.mobile = mobile;
     }
+
     public String getAddress() {
         return address;
     }
+
     public void setAddress(String address) {
         this.address = address;
     }
-   
 
-    
-    
-   /*  public boolean isPasswordMatching() {
-        return this.password != null && this.password.equals(this.cofmpwd);
-    } */
-    
-    
 }
-
