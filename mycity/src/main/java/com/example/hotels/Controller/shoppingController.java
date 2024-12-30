@@ -30,7 +30,7 @@ public class shoppingController {
     @Autowired
     private Shopping_ImageService shopping_ImageService;
 
-    @GetMapping("/homePage")
+    @GetMapping("/shopping")
     public String homePage() {
         return "homePage";
     }
