@@ -46,7 +46,7 @@ public class ShoppingAdminController {
     @Autowired
     private ProductRepository productRepository;
     
-    @GetMapping("/brands")
+    @GetMapping("/shopping-brands")
     public String getBrands(Model model){
         var brands=brandRepository.findAll(Sort.by(Sort.Direction.DESC, "brandId"));
         model.addAttribute("brands", brands);
@@ -54,7 +54,7 @@ public class ShoppingAdminController {
         return "brands/brands";
     }
 
-    @GetMapping("/create")
+    @GetMapping("/shopping-brand-create")
     public String createBrand(Model model){
         BrandDto brandDto=new BrandDto();
         model.addAttribute("brandDto", brandDto);
@@ -62,7 +62,7 @@ public class ShoppingAdminController {
         return "brands/create";
     }
 
-	@PostMapping("/create")
+	@PostMapping("/shopping-brand-create")
 	public String addBrand(@Valid @ModelAttribute BrandDto brandDto, BindingResult result){
 		if(result.hasErrors()){
 			return "brands/create";
@@ -74,14 +74,14 @@ public class ShoppingAdminController {
 		brand.setCountry(brandDto.getCountry());
 
 		brandRepository.save(brand);
-		return "redirect:/brands";
+		return "redirect:/shopping-brands";
 	}
 
     @GetMapping("/edit")
     public String editBrand(Model model, @RequestParam Long brandId){
         Brand brand=brandRepository.findById(brandId).orElse(null);
         if(brand==null){
-            return "redirect:/brands";
+            return "redirect:/shopping-brands";
         }
 
         BrandDto brandDto=new BrandDto();
@@ -100,7 +100,7 @@ public class ShoppingAdminController {
     public String editBrands(Model model, @RequestParam Long brandId, @Valid @ModelAttribute BrandDto brandDto, BindingResult result){
         Brand brand=brandRepository.findById(brandId).orElse(null);
         if(brand==null){
-            return "redirect:/brands";
+            return "redirect:/shopping-brands";
         }
 
         model.addAttribute("brand", brand);
@@ -118,7 +118,7 @@ public class ShoppingAdminController {
         } catch (Exception e) {
             return "brands/edit";
         }
-        return "redirect:/brands";
+        return "redirect:/shopping-brands";
     }
 
     @GetMapping("/deleteBrand")
