@@ -52,7 +52,7 @@ public class adminController {
         return "songs";
     }
 
-    @GetMapping("/ex")
+    @GetMapping("/hotels")
     public String ex(Model model) {
         List<Hotel> hotelsList1 = hotelService.getAllHotels();
         
@@ -73,8 +73,6 @@ public class adminController {
         model.addAttribute("hotelsList1", hotelsList1);
         return "home";
     }
-
-
 
     @GetMapping("/sub-hotels")
     public String subHotels(@RequestParam("hotelId") Long hotelId, Model model) {
