@@ -7,11 +7,6 @@
   <title>Shopping Home Page</title>
   <link rel="stylesheet" href="/css/Shopping_styles.css" />
   <style>
-
-
-.dropdown-wrapper select{
-      height: 70px;
-    }
     .search-container {
       display: flex;
       align-items: center;
@@ -35,15 +30,16 @@
 
     /* Category Bar */
     .category-bar {
-       display: flex;
+
       padding: 0;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       margin-top: 10px;
       width: 100%;
       display: flex;
-
+      /* Full-width bar */
     }
 
-    .category-bar  {
+    .category-bar ul {
       display: flex;
       justify-content: space-around;
       align-items: center;
@@ -51,55 +47,43 @@
       margin: 0;
       padding: 0;
       width: 100%;
-      box-shadow: none;
     }
 
     .category-item {
-      display: flex;
+      text-align: center;
       flex: 1;
-      margin: 10px;
+      margin: 0 10px;
       border-radius: 10px;
-      padding: 0px;
-      cursor: pointer;
+      padding: 15px;
+      border: 1px solid #1f1d1d;
+      background-color: #f88c49ef;
+      /* Base style for category items */
     }
 
+    /* Style for the second category item style */
     .category-item-style2 {
-      cursor: pointer;
+      background-color: #f88c49ef;
+      /* Different background color */
+      border: 1px solid #1f1d1d;
+      /* Add a border */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      /* Add a shadow */
     }
 
     .category-item a {
       color: #333;
       text-decoration: none;
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       align-items: center;
       font-weight: bold;
-      cursor: pointer;
-     
     }
 
     .category-item a img {
-      width: 76px;
-      height: 66px;
+      width: 50px;
+      height: 50px;
       object-fit: contain;
       margin-bottom: 10px;
-      margin-left: -20px;
-      cursor: pointer;
-    }
-
-    .category-item a button{
-      background-color: #F37022;
-      border: none;
-      color: white;
-      padding: 2px;
-      height: 44px;
-      font-size: 18px;
-      font-weight: bold;
-      width: 140px;
-      border-top-left-radius: 10px;
-      border-bottom-left-radius: 10px;
-      cursor: pointer;
-     /*  margin-right: -10px; */
     }
 
     .category-bar ul li a:hover {
@@ -313,7 +297,7 @@
     /* Dropdown Wrapper */
     .dropdown-wrapper {
       display: flex;
-      /* align-items: center; */
+      align-items: center;
       position: relative;
       width: 70%;
     }
@@ -570,6 +554,228 @@ h2 {
       height: 200%;
       object-fit: cover;
     }
+    main {
+      max-width: none;
+      margin: 0 ;
+      padding: 20px;
+  }
+  
+  .section-title {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #333;
+  }
+  .categories-section {
+      padding: 24px;
+  }
+  
+  .categories-grid {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto; 
+      padding: 10px 0;
+      scrollbar-width: none; 
+      -ms-overflow-style: none; 
+  }
+  
+  
+  .categories-grid::-webkit-scrollbar {
+      display: none;
+  }.category-card {
+      display: flex;
+      align-items: center;
+      min-width: 200px;
+      height: 60px;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .category-name {
+      background: #ff6b1a;
+      color: white;
+      padding: 8px 16px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+  }
+  
+  .category-image {
+      flex: 1;
+      padding: 8px;
+      display: flex;
+      justify-content: center;
+  }
+  
+  .category-image img {
+      height: 40px;
+      object-fit: contain;
+  }
+  
+  /* products */
+  .deals-section {
+      padding: 24px;
+  }
+  
+  .section-title {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #333;
+  }
+  
+  .deals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding-bottom: 10px;
+}
+ 
+.deal-card {
+    background: linear-gradient(135deg, #ff6b1a, #ff8c42);
+    border-radius: 12px;
+    padding: 20px;
+    color: white;
+    width: 100%;
+    box-sizing: border-box;
+}
+ 
+.deal-main-image {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    background: white;
+    border-radius: 8px;
+    padding: 10px;
+}
+ 
+.deal-title {
+    font-size: 14px;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+}
+ 
+.deal-price {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+ 
+  
+  .current-price {
+      font-size: 24px;
+      font-weight: bold;
+  }
+  
+  .original-price {
+      text-decoration: line-through;
+      opacity: 0.8;
+  }
+  
+  .deal-thumbnails {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+  }
+  
+  .thumbnail {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      padding: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  
+  .thumbnail img {
+      width: 100%;
+      height: 60px;
+      object-fit: contain;
+  }
+  /* header */
+  .header-top {
+      background: #ff6b1a;
+      padding: 12px 0;
+      color: white;
+  }
+  
+  .location-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+  }
+  
+  .location-selector {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+  }
+  
+  .search-cart-container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex: 1;
+      max-width: 600px;
+      margin-left: 20px;
+  }
+  
+  .search-container {
+      position: relative;
+      flex: 1;
+  }
+  
+  .search-input {
+      width: 100%;
+      padding: 8px 40px 8px 16px;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+  }
+  
+  .search-button {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+  }
+  
+  .cart-icon {
+      position: relative;
+      cursor: pointer;
+      font-size: 20px;
+  }
+  
+  .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: white;
+      color: #ff6b1a;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+  }
+  
   </style>
 </head>
 
@@ -599,7 +805,7 @@ h2 {
           <a href="/Entertainment/home"><span>Entertainment</span></a>
         </li>
         <li class="nav_link active">
-          <a href="/shopping"><span>Shopping</span></a>
+          <a href="/homePage"><span>Shopping</span></a>
         </li>
         <li class="nav_link">
           <a href="/tourism"><span>Tourism</span></a>
@@ -629,12 +835,12 @@ h2 {
       <img src="/imgs/rb_102101.png" alt="" />
     </div>
     <!-- Dropdown Column -->
-    <div class="dropdown-column" style="box-shadow: none; border: none; background-color: transparent;float: left;margin-bottom: 20px;">
-      <div class="left" >
-        <div class="dropdown-wrapper" style="padding: 5px;">
+    <div class="dropdown-column" style="box-shadow: none; border: none; background-color: transparent;">
+      <div class="left">
+        <div class="dropdown-wrapper">
           <img src="/imgs/cart img/Location.png" alt="City Icon" class="dropdown-icon" />
 
-          <select class="vsp" style="width: 180px;height:60px; background-color: #F37022;">
+          <select>
             <option value="">Select a City</option>
             <option value="alluri-sitharama-raju">Alluri Sitharama Raju</option>
             <option value="anakapalli">Anakapalli</option>
@@ -672,124 +878,147 @@ h2 {
           <input type="text" placeholder="Search..." style="height: 60px;"/>
           <img src="/imgs/cart img/search.png" alt="Search" />
         </div>
+        
         <div class="add-card-icon">
           <a href="/cart/view"><img src="/imgs/cart img/Shopping Cart.png" alt="Add Card" /></a>
         </div>
+        
       </div>
     </div>
 
 
     <div class="location-buttons">
-      <a href="/shoppingCategory" style="text-decoration: none">
-        <div class="categories" style="margin-top: 50px">
-        <div class="heading-container">
-          <h2 class="heading" style="margin-top: 15px;padding-left: 5px;">Categories</h2>
-        </div>
-        </div>
-      </a>
-    </div>
-  </div>
+      <main>
+        <section class="categories-section">
+            <a href="shoppingCategory" style="text-decoration: none;"><h2 class="section-title">Categories</h2></a>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-name">Laptops</div>
+                    <div class="category-image">
+                        <img src="/imgs/laptop.jpg" alt="Home-theatres">
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-name">Camera</div>
+                    <div class="category-image">
+                        <img src="/images/camera.jpg" alt="Camera">
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-name">Accessory</div>
+                    <div class="category-image">
+                        <img src="/images/accessories.jpg" alt="Accessory">
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-name">TV</div>
+                    <div class="category-image">
+                        <img src="/images/tv.jpg" alt="TV">
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-name">Headphones</div>
+                    <div class="category-image">
+                        <img src="/images/headphones.jpg" alt="Headphones">
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-name">Cothing</div>
+                    <div class="category-image">
+                        <img src="/images/clothing.jpg" alt="Storage">
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-name">Beauty</div>
+                    <div class="category-image">
+                        <img src="/images/beauty.jpg" alt="Home Theater">
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <section class="deals-section">
+            <h2 class="section-title">Deals near you</h2>
+            <div class="deals-grid" id="deals-grid">
+                <div class="deal-card">
+                    <img src="/images/clothing.jpg" alt="Samsung HW-J355 SOUNDBAR PACK Home Theater System" class="deal-main-image">
+                    <div class="deal-title">Best collection of clothes for your range</div>
+                    <div class="deal-price">
+                        <span class="current-price">599 onwards</span>
+                    </div>
+                    <div class="deal-thumbnails">
+                        <div class="thumbnail">
+                            <img src="/images/clothing.jpg" alt="Thumbnail">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="/images/clothing.jpg" alt="Thumbnail">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="/images/clothing.jpg" alt="Thumbnail">
+                        </div>
+                    </div>
+                </div>
+                <div class="deal-card">
+                    <img src="/images/camera.jpg" alt="Sony Alpha ILCE-6000Y/H 24.3MP Mirrorless Digital SLR Camera" class="deal-main-image">
+                    <div class="deal-title">Sony Alpha ILCE-6000Y/H 24.3MP Mirrorless Digital SLR Camera</div>
+                    <div class="deal-price">
+                        <span class="current-price">32499</span>
+                        <span class="original-price">48999</span>
+                    </div>
+                    <div class="deal-thumbnails">
+                        <div class="thumbnail">
+                            <img src="/images/camera.jpg" alt="Thumbnail">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="/images/camera.jpg" alt="Thumbnail">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="/images/camera.jpg" alt="Thumbnail">
+                        </div>
+                    </div>
+                </div>
+                <div class="deal-card">
+                    <img src="/images/laptop.jpg" alt="Sony Alpha ILCE-6000Y/H 24.3MP Mirrorless Digital SLR Camera" class="deal-main-image">
+                    <div class="deal-title">HP PAVILION 14 INCH LAPTOP WITH NVDIA GRAPHIC CARD </div>
+                    <div class="deal-price">
+                        <span class="current-price">50000</span>
+                        <span class="original-price">65000 </span>
+                    </div>
+                    <div class="deal-thumbnails">
+                        <div class="thumbnail">
+                            <img src="/images/laptop.jpg" alt="Thumbnail">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="/images/laptop.jpg" alt="Thumbnail">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="/images/laptop.jpg" alt="Thumbnail">
+                        </div>
+                    </div>
+                </div>
+                <div class="deal-card">
+                    <img src="/images/headphones.jpg" alt="Sony Alpha ILCE-6000Y/H 24.3MP Mirrorless Digital SLR Camera" class="deal-main-image">
+                    <div class="deal-title">Sony Bluetooth Headset with 5.2 range</div>
+                    <div class="deal-price">
+                        <span class="current-price">45000</span>
+                        <span class="original-price">79000</span>
+                    </div>
+                    <div class="deal-thumbnails">
+                        <div class="thumbnail">
+                            <img src="/images/clothing.jpg" alt="Thumbnail">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="/images/headphones.jpg" alt="Thumbnail">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="/images/headphones.jpg" alt="Thumbnail">
+                        </div>
+                    </div>
+                </div>
 
-
-  <div class="category-bar">
- 
-      <div class="category-item" style="background-color:transparent;border: none;display: flex;flex-direction: row;">
-        <a href="/mobiles" style="display: flex;" >
-          <button>Mobiles</button>
-          <img src="/imgs/Apple-3.jpg" alt="Category 1">
-        
-        </a>
-      </div>
-      <div class="category-item category-item-style2">
-        <a href="/shirts">
-          <button>Shirts</button>
-          <img src="/imgs/ketch2.2.jpg" alt="Category 2">
-         
-        </a>
-      </div>
-
-      <div class="category-item category-item-style2">
-        <a href="/bluetooth-earphones">
-          <button>Earphones</button>
-          <img src="/imgs/ketch2.2.jpg" alt="Category 2">
-         
-        </a>
-      </div>
- 
-      <div class="category-item category-item-style2">
-        <a href="/smart-watches">
-          <button>Smart Watches</button>
-          <img src="/imgs/ketch2.2.jpg" alt="Category 2">
-         
-        </a>
-      </div>
-   
-      <div class="category-item">
-        <a href="/womens-tops">
-          <button>Tops</button>
-          <img src="/imgs/white1.webp" alt="Category 1">
-      
-        </a>
-      </div>
-      <div class="category-item category-item-style2">
-        <a href="/homeTheatres">
-          <button>Speakers</button>
-          <img src="/imgs/theater.png" alt="Category 2">
-        
-        </a>
-      </div>
-  
-      <div class="category-item">
-        <a href="/mens-footwear">
-          <button>Footwear</button>
-          <img src="/imgs/ASIAN-1.jpg" alt="Category 1">
-        
-        </a>
-      </div>
-    <!--   <div class="category-item category-item-style2">
-        <a href="home-needs">
-          <button>Home Needs</button>
-          <img src="/imgs/BSB HOME-2.jpg" alt="Category 2">
-         
-        </a>
-      </div> -->
-  
-    </div>
-
-  <div class="categories">
-    <div class="heading-container">
-      <h2 class="heading" style="margin-top: 25px;">Deals near you</h2>
-    </div>
-    <div class="mens-wear">
-      <a href="/homeTheatres" style="text-decoration: none">
-        <div class="mens">
-          <img src="/imgs/theater.png" alt="" />
-          <p>Home Theater</p>
-        </div>
-      </a>
-      <a href="/shirts" style="text-decoration: none">
-        <div class="mens">
-          <img src="/imgs/shirt.png" alt="" />
-          <p>Shirts</p>
-        </div>
-      </a>
-      <a href="/doormates" style="text-decoration: none">
-        <div class="mens">
-          <img src="/imgs/doormates.png" alt="" />
-          <p>Doormates</p>
-        </div>
-      </a>
-      <a href="/rings" style="text-decoration: none">
-        <div class="mens">
-          <img src="/imgs/rings.png" alt="" />
-          <p>Rings</p>
-        </div>
-      </a>
-
-    </div>
-  </div>
-
+            </div>
+        </section>
+    </main>
   <div class="categories" style="margin-top: 50px">
     <div class="heading-container">
       <h2 class="heading">Based on interest</h2>
@@ -853,7 +1082,7 @@ h2 {
     </div>
   </div>
 
-  <h2 style="padding-left: 12px; padding-top: 30px; color: #706e6e;">Shop By Brands</h2>
+  <h2 style="padding-left: 12px; padding-top: 30px;">Shop By Brands</h2>
   <div class="container">
     <div class="category-container">
       <h3>Music</h3><br>
