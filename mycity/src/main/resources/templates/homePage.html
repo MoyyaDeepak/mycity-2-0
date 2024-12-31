@@ -7,6 +7,11 @@
   <title>Shopping Home Page</title>
   <link rel="stylesheet" href="/css/Shopping_styles.css" />
   <style>
+
+
+.dropdown-wrapper select{
+      height: 70px;
+    }
     .search-container {
       display: flex;
       align-items: center;
@@ -30,16 +35,15 @@
 
     /* Category Bar */
     .category-bar {
-
+       display: flex;
       padding: 0;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       margin-top: 10px;
       width: 100%;
       display: flex;
-      /* Full-width bar */
+
     }
 
-    .category-bar ul {
+    .category-bar  {
       display: flex;
       justify-content: space-around;
       align-items: center;
@@ -47,43 +51,55 @@
       margin: 0;
       padding: 0;
       width: 100%;
+      box-shadow: none;
     }
 
     .category-item {
-      text-align: center;
+      display: flex;
       flex: 1;
-      margin: 0 10px;
+      margin: 10px;
       border-radius: 10px;
-      padding: 15px;
-      border: 1px solid #1f1d1d;
-      background-color: #f88c49ef;
-      /* Base style for category items */
+      padding: 0px;
+      cursor: pointer;
     }
 
-    /* Style for the second category item style */
     .category-item-style2 {
-      background-color: #f88c49ef;
-      /* Different background color */
-      border: 1px solid #1f1d1d;
-      /* Add a border */
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-      /* Add a shadow */
+      cursor: pointer;
     }
 
     .category-item a {
       color: #333;
       text-decoration: none;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
       font-weight: bold;
+      cursor: pointer;
+     
     }
 
     .category-item a img {
-      width: 50px;
-      height: 50px;
+      width: 76px;
+      height: 66px;
       object-fit: contain;
       margin-bottom: 10px;
+      margin-left: -20px;
+      cursor: pointer;
+    }
+
+    .category-item a button{
+      background-color: #F37022;
+      border: none;
+      color: white;
+      padding: 2px;
+      height: 44px;
+      font-size: 18px;
+      font-weight: bold;
+      width: 140px;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      cursor: pointer;
+     /*  margin-right: -10px; */
     }
 
     .category-bar ul li a:hover {
@@ -297,7 +313,7 @@
     /* Dropdown Wrapper */
     .dropdown-wrapper {
       display: flex;
-      align-items: center;
+      /* align-items: center; */
       position: relative;
       width: 70%;
     }
@@ -340,7 +356,7 @@
       background-color: #f2831c;
     }
 
-    /*shop brands*/
+    /* /shop brands/ */
     h1 {
       text-align: left;
       margin-bottom: 20px;
@@ -406,7 +422,7 @@
       /* Ensures the images remain within their box */
     }
 
-    /*shop*/
+    /* /shop/ */
     h2 {
       text-align: left;
       margin-bottom: 20px;
@@ -520,7 +536,7 @@ h2 {
   max-height: 100%; 
   object-fit: contain; 
 }
-    /*buttom bannar*/
+    /* /buttom bannar/ */
     .button-container {
       display: grid;
       grid-template-columns: repeat(3, 2fr);
@@ -613,12 +629,12 @@ h2 {
       <img src="/imgs/rb_102101.png" alt="" />
     </div>
     <!-- Dropdown Column -->
-    <div class="dropdown-column" style="box-shadow: none; border: none; background-color: transparent;">
-      <div class="left">
-        <div class="dropdown-wrapper">
+    <div class="dropdown-column" style="box-shadow: none; border: none; background-color: transparent;float: left;margin-bottom: 20px;">
+      <div class="left" >
+        <div class="dropdown-wrapper" style="padding: 5px;">
           <img src="/imgs/cart img/Location.png" alt="City Icon" class="dropdown-icon" />
 
-          <select>
+          <select class="vsp" style="width: 180px;height:60px; background-color: #F37022;">
             <option value="">Select a City</option>
             <option value="alluri-sitharama-raju">Alluri Sitharama Raju</option>
             <option value="anakapalli">Anakapalli</option>
@@ -665,54 +681,81 @@ h2 {
 
     <div class="location-buttons">
       <a href="/shoppingCategory" style="text-decoration: none">
-        <button class="vsp">Categories</button>
+        <div class="categories" style="margin-top: 50px">
+        <div class="heading-container">
+          <h2 class="heading" style="margin-top: 15px;padding-left: 5px;">Categories</h2>
+        </div>
+        </div>
       </a>
     </div>
   </div>
-  <nav class="category-bar">
-    <ul>
-      <li class="category-item">
-        <a href="/mobiles">
+
+
+
+  <div class="category-bar">
+ 
+      <div class="category-item" style="background-color:transparent;border: none;display: flex;flex-direction: row;">
+        <a href="/mobiles" style="display: flex;" >
+          <button>Mobiles</button>
           <img src="/imgs/Apple-3.jpg" alt="Category 1">
-          <span>Mobiles</span>
+        
         </a>
-      </li>
-      <li class="category-item category-item-style2">
+      </div>
+      <div class="category-item category-item-style2">
         <a href="/shirts">
+          <button>Shirts</button>
           <img src="/imgs/ketch2.2.jpg" alt="Category 2">
-          <span>Shirts</span>
+         
         </a>
-      </li>
-    </ul>
-    <ul>
-      <li class="category-item">
+      </div>
+
+      <div class="category-item category-item-style2">
+        <a href="/bluetooth-earphones">
+          <button>Earphones</button>
+          <img src="/imgs/ketch2.2.jpg" alt="Category 2">
+         
+        </a>
+      </div>
+ 
+      <div class="category-item category-item-style2">
+        <a href="/smart-watches">
+          <button>Smart Watches</button>
+          <img src="/imgs/ketch2.2.jpg" alt="Category 2">
+         
+        </a>
+      </div>
+   
+      <div class="category-item">
         <a href="/womens-tops">
+          <button>Tops</button>
           <img src="/imgs/white1.webp" alt="Category 1">
-          <span>Tops</span>
+      
         </a>
-      </li>
-      <li class="category-item category-item-style2">
+      </div>
+      <div class="category-item category-item-style2">
         <a href="/homeTheatres">
+          <button>Speakers</button>
           <img src="/imgs/theater.png" alt="Category 2">
-          <span>Speakers</span>
+        
         </a>
-      </li>
-    </ul>
-    <ul>
-      <li class="category-item">
+      </div>
+  
+      <div class="category-item">
         <a href="/mens-footwear">
+          <button>Footwear</button>
           <img src="/imgs/ASIAN-1.jpg" alt="Category 1">
-          <span>Footwear</span>
+        
         </a>
-      </li>
-      <li class="category-item category-item-style2">
+      </div>
+    <!--   <div class="category-item category-item-style2">
         <a href="home-needs">
+          <button>Home Needs</button>
           <img src="/imgs/BSB HOME-2.jpg" alt="Category 2">
-          <span>Home Needs</span>
+         
         </a>
-      </li>
-    </ul>
-  </nav>
+      </div> -->
+  
+    </div>
 
   <div class="categories">
     <div class="heading-container">
@@ -810,7 +853,7 @@ h2 {
     </div>
   </div>
 
-  <h2 style="padding-left: 12px; padding-top: 30px;">Shop By Brands</h2>
+  <h2 style="padding-left: 12px; padding-top: 30px; color: #706e6e;">Shop By Brands</h2>
   <div class="container">
     <div class="category-container">
       <h3>Music</h3><br>

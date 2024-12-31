@@ -44,29 +44,26 @@ public class HotelController {
     @Autowired
     private HotelImageService hotelImageService;
 
-
-     @Autowired
+    @Autowired
     private RoomService roomService;
-
 
     @Autowired
     private AmenityService amenityService;
-/* 
-    @Autowired
-    private HotelAmenities hotelAmenities; */
+    /*
+     * @Autowired
+     * private HotelAmenities hotelAmenities;
+     */
 
     @Autowired
-    private HotelAmenitiesService hotelAmenitiesService; 
+    private HotelAmenitiesService hotelAmenitiesService;
 
-
-
- @GetMapping("/hotels/{id}")
+    @GetMapping("/hotels/{id}")
     public String showHotelDetails(@PathVariable Long id, Model model) {
         // Fetch hotel by ID
         Hotel hotel = hotelService.getHotelById(id);
-        
+
         // Fetch related images
-        List<HotelImage> relatedImages =hotelImageService.getHotelImagesByHotelId(id);
+        List<HotelImage> relatedImages = hotelImageService.getHotelImagesByHotelId(id);
 
         // Add attributes to the model
         model.addAttribute("hotel", hotel);
@@ -75,7 +72,6 @@ public class HotelController {
         // Return the Thymeleaf template
         return "sub-hotels";
     }
-    
 
     // Show Add Hotel Form
     @GetMapping("/hoteladd")
@@ -83,61 +79,58 @@ public class HotelController {
         List<Amenity> amenities = amenityService.getAllAmenities(); // Fetch amenities from the database
         model.addAttribute("amenities", amenities);
         model.addAttribute("hotel", new Hotel());
-         List<City> cities = cityService.getAllCities();  // Fetch cities from the database
-         model.addAttribute("cities", cities); 
-        List<Address> addresses=addressService.getAllAddresses();
-        model.addAttribute("address",addresses); 
-    /*   model.addAttribute("rooms", roomService.getAllRooms());  */
+        List<City> cities = cityService.getAllCities(); // Fetch cities from the database
+        model.addAttribute("cities", cities);
+        List<Address> addresses = addressService.getAllAddresses();
+        model.addAttribute("address", addresses);
+        /* model.addAttribute("rooms", roomService.getAllRooms()); */
         return "hotels";
     }
-
 
     // Show Update Hotel Form
     @GetMapping("/hotel/showFormUpdate")
     public String showUpdate(@RequestParam("hotelId") Long hotelId, Model model) {
         Hotel theHotel = hotelService.getHotelById(hotelId); // Fetch the hotel by ID
-        
+
         model.addAttribute("hotel", theHotel);
-        model.addAttribute("cities", cityService.getAllCities()); 
-         model.addAttribute("address", addressService.getAllAddresses()); 
-        /* model.addAttribute("rooms", roomService.getAllRooms());   */
-        model.addAttribute("amenities", amenityService.getAllAmenities()); 
- 
+        model.addAttribute("cities", cityService.getAllCities());
+        model.addAttribute("address", addressService.getAllAddresses());
+        /* model.addAttribute("rooms", roomService.getAllRooms()); */
+        model.addAttribute("amenities", amenityService.getAllAmenities());
 
         return "hotels"; // Return the correct view name
     }
 
-
     @PostMapping("/save")
-public String saveHotel(@ModelAttribute Hotel hotel, @RequestParam Long addressId, @RequestParam List<Long> amenities) {
-    Address address = addressService.getAddressById(addressId);
-    hotel.setAddress(address);
-    
-    // Check for existing hotel to prevent duplicate entries
-    if (hotel.getHotelId() != null) {
-        Hotel existingHotel = hotelService.getHotelById(hotel.getHotelId());
-        if (existingHotel != null) {
-            hotel.setCreatedAt(existingHotel.getCreatedAt());
+    public String saveHotel(@ModelAttribute Hotel hotel, @RequestParam Long addressId,
+            @RequestParam List<Long> amenities) {
+        Address address = addressService.getAddressById(addressId);
+        hotel.setAddress(address);
+
+        // Check for existing hotel to prevent duplicate entries
+        if (hotel.getHotelId() != null) {
+            Hotel existingHotel = hotelService.getHotelById(hotel.getHotelId());
+            if (existingHotel != null) {
+                hotel.setCreatedAt(existingHotel.getCreatedAt());
+            }
         }
+
+        List<Amenity> selectedAmenities = amenityService.getAmenitiesByIds(amenities);
+        hotel.setAmenities(selectedAmenities);
+
+        hotelService.saveHotel(hotel);
+        return "redirect:/list";
     }
 
-    List<Amenity> selectedAmenities = amenityService.getAmenitiesByIds(amenities);
-    hotel.setAmenities(selectedAmenities);
-
-    hotelService.saveHotel(hotel); 
-    return "redirect:/list"; 
-}
-
-
     // Display List of Hotels
-     @GetMapping("/list")
+    @GetMapping("/list")
     public String listHotels(Model model) {
         List<Hotel> hotels = hotelService.getAllHotels();
-        model.addAttribute("amenities", amenityService.getAllAmenities()); 
+        model.addAttribute("amenities", amenityService.getAllAmenities());
         model.addAttribute("hotels", hotels);
         model.addAttribute("hotelamenities", hotelAmenitiesService.getAllHotelAmenities());
-        model.addAttribute("address",addressService.getAllAddresses());
-      
+        model.addAttribute("address", addressService.getAllAddresses());
+
         return "hotels-list";
     }
 
@@ -145,7 +138,7 @@ public String saveHotel(@ModelAttribute Hotel hotel, @RequestParam Long addressI
     @GetMapping("/hotel/delete/{id}")
     public String deleteHotel(@PathVariable("id") Long id) {
         Hotel hotel = hotelService.getHotelById(id);
-    
+
         // Clear relationships
         if (hotel.getRooms() != null) {
             hotel.getRooms().forEach(room -> room.setHotel(null));
@@ -155,20 +148,19 @@ public String saveHotel(@ModelAttribute Hotel hotel, @RequestParam Long addressI
             hotel.getReviews().forEach(review -> review.setHotel(null));
             hotel.getReviews().clear();
         }
-    
+
         // Delete the hotel
         hotelService.deleteHotel(id);
         return "redirect:/list";
-     }
-    
+    }
 
     @GetMapping("/search-hotels")
-public String searchHotels(@RequestParam("query") String query, Model model) {
-    List<Hotel> filteredHotels = hotelService.searchHotels(query);
-    model.addAttribute("hotelsList1", filteredHotels);
-    List<Hotel> hotelsList1 = hotelService.getAllHotels();
+    public String searchHotels(@RequestParam("query") String query, Model model) {
+        List<Hotel> filteredHotels = hotelService.searchHotels(query);
+        model.addAttribute("hotelsList1", filteredHotels);
+        List<Hotel> hotelsList1 = hotelService.getAllHotels();
 
-     for (Hotel hotel : hotelsList1) {
+        for (Hotel hotel : hotelsList1) {
             HotelImage primaryImage = hotelImageService.getPrimaryImageByHotelId(hotel.getHotelId());
             if (primaryImage != null && primaryImage.getHotelImage() != null) {
                 // Convert image bytes to Base64
@@ -176,10 +168,6 @@ public String searchHotels(@RequestParam("query") String query, Model model) {
                 hotel.setPrimaryHotelImageBase64(base64Image); // This should now work
             }
         }
-    return "home"; // Your Thymeleaf template name
-}
-
-
-
-
+        return "home"; // Your Thymeleaf template name
+    }
 }

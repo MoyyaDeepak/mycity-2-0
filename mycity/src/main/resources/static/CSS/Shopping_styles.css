@@ -128,21 +128,6 @@ ul {
     background-color: #e64a19;
   }
 
-/* .location-buttons .vsp {
-    display: flex;
-    background-color: #F37022;
-    color: white;
-    height: 50px;
-    width: 140px;
-    border: none;
-    padding: 20px;
-    margin-left: 25px;
-    font-size: 19px;
-    align-items: center;
-    border-radius: 10px;
-    cursor: pointer;
-} */
-
 .location-buttons .vsp {
     display: flex;
     background-color: #F37022;
@@ -166,6 +151,7 @@ ul {
 
 .heading {
     margin: 20px 0 0 5px;
+    color:#706e6e;
 }
 
 .mens-wear {
