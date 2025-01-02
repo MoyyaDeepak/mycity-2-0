@@ -168,6 +168,48 @@ public class shoppingController {
         return "shirts";
     }
 
+    @GetMapping("/laptops")
+    public String laptops(Model model) {
+        Long laptopsCategoryId = 36L;
+        model.addAttribute("products", productRepository.findByCategoryId(laptopsCategoryId));
+        return "shirts";
+    }
+
+    @GetMapping("/tv")
+    public String tvs(Model model) {
+        Long tvsCategoryId = 37L;
+        model.addAttribute("products", productRepository.findByCategoryId(tvsCategoryId));
+        return "shirts";
+    }
+
+    @GetMapping("/skin-care")
+    public String facewash(Model model) {
+        Long skincareCategoryId = 40L;
+        model.addAttribute("products", productRepository.findByCategoryId(skincareCategoryId));
+        return "shirts";
+    }
+
+    @GetMapping("/camera")
+    public String camera(Model model) {
+        Long cameraCategoryId = 41L;
+        model.addAttribute("products", productRepository.findByCategoryId(cameraCategoryId));
+        return "shirts";
+    }
+
+    @GetMapping("/accessories")
+    public String accessories(Model model) {
+        Long accessoriesCategoryId = 42L;
+        model.addAttribute("products", productRepository.findByCategoryId(accessoriesCategoryId));
+        return "shirts";
+    }
+
+    @GetMapping("/headphones")
+    public String headphones(Model model) {
+        Long headphonesCategoryId = 43L;
+        model.addAttribute("products", productRepository.findByCategoryId(headphonesCategoryId));
+        return "shirts";
+    }
+
     @GetMapping("/doormates")
     public String doorMates(Model model) {
         Long doormatesCatgegoryId = 15L;
